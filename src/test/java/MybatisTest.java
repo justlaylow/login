@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.tl.login.mapper.AdminMapper;
+import com.tl.login.mapper.EmployeeMapper;
 import com.tl.login.pojo.Admin;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -16,19 +17,19 @@ import com.tl.login.pojo.Admin;
 public class MybatisTest {
 
 	@Autowired
-	private AdminMapper adminMapper;
+	private EmployeeMapper employeeMapper;
 
-	@Test
+	/*@Test
 	public void testAdd() {
 		Admin admin = new Admin();
 		admin.setAdm_count("adm_count");
 		adminMapper.add(admin);
-	}
+	}*/
 
 	@Test
 	public void testList() {
-		System.out.println(adminMapper);
-		List<Admin> cs=adminMapper.list();
+		System.out.println(employeeMapper);
+		List<Admin> cs=employeeMapper.list();
 		for (Admin c : cs) {
 			System.out.println(c.getAdm_count());
 		}

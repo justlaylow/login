@@ -2,25 +2,26 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper	namespace="com.tl.login.mapper.AdminMapper">
+<mapper namespace="com.tl.login.mapper.AdminMapper">
 	<resultMap type="com.tl.login.pojo.Admin" id="adminMap">
-		<id property="id" column="id"/>
-		<result column="adm_count" property="adm_count"/>
-		<result column="adm_pass" property="adm_pass"/>
+		<id property="id" column="id" />
+		<result column="adm_count" property="adm_count" />
+		<result column="adm_pass" property="adm_pass" />
 	</resultMap>
-	
+
 	<!-- 此处select标签的id值对应Mapper类中方法名 -->
 	<select id="getAdmin" parameterType="string" resultMap="adminMap">
 		<!-- 此处写sql语句,#{Mapper类传入的参数} -->
-		select * from admin_ where adm_count=#{adminname} and adm_pass=#{password}
+		select * from admin_ where adm_count=#{adminname} and
+		adm_pass=#{password}
 	</select>
-	
+
 	<insert id="add" parameterType="Admin">
 		<!-- 此处写sql语句,#{Mapper类传入的参数} -->
 		insert into admin_ (adm_count) values(#{adm_count})
 	</insert>
-	
+
 	<select id="list" resultType="Admin">
-	        select * from admin_      
-	    </select>
+		select * from admin_
+	</select>
 </mapper>
