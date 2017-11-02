@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tl.login.mapper.EmployeeMapper">
+	<resultMap id="BaseResultMap" type="com.tl.login.pojo.Employee">
+		<id column="Id" jdbcType="INTEGER" property="id" />
+		<result column="emp_id" jdbcType="INTEGER" property="empId" />
+		<result column="emp_name" jdbcType="VARCHAR" property="empName" />
+		<result column="emp_job_title" jdbcType="VARCHAR" property="empJobTitle" />
+		<result column="emp_work_category" jdbcType="VARCHAR" property="empWorkCategory" />
+		<result column="emp_ID_number" jdbcType="CHAR" property="empIdNumber" />
+		<result column="emp_phone" jdbcType="INTEGER" property="empPhone" />
+		<result column="emp_sex" jdbcType="VARCHAR" property="empSex" />
+		<result column="emp_age" jdbcType="INTEGER" property="empAge" />
+		<result column="emp_entry_date" jdbcType="DATE" property="empEntryDate" />
+		<result column="emp_department" jdbcType="VARCHAR" property="empDepartment" />
+		<result column="emp_native_place" jdbcType="VARCHAR" property="empNativePlace" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		Id, emp_id, emp_name, emp_job_title, emp_work_category, emp_ID_number,
+		emp_phone,
+		emp_sex, emp_age, emp_entry_date, emp_department, emp_native_place
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from employee_
+		where Id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from employee_
+		where Id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.tl.login.pojo.Employee">
+		insert into employee_ ( emp_id, emp_name,
+		emp_job_title, emp_work_category, emp_ID_number,
+		emp_phone, emp_sex, emp_age,
+		emp_entry_date, emp_department, emp_native_place
+		)
+		values ( #{empId,jdbcType=INTEGER},
+		#{empName,jdbcType=VARCHAR},
+		#{empJobTitle,jdbcType=VARCHAR}, #{empWorkCategory,jdbcType=VARCHAR}, #{empIdNumber,jdbcType=CHAR},
+		#{empPhone,jdbcType=INTEGER}, #{empSex,jdbcType=VARCHAR},
+		#{empAge,jdbcType=INTEGER},
+		#{empEntryDate,jdbcType=DATE}, #{empDepartment,jdbcType=VARCHAR}, #{empNativePlace,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.tl.login.pojo.Employee">
+		insert into employee_
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				Id,
+			</if>
+			<if test="empId != null">
+				emp_id,
+			</if>
+			<if test="empName != null">
+				emp_name,
+			</if>
+			<if test="empJobTitle != null">
+				emp_job_title,
+			</if>
+			<if test="empWorkCategory != null">
+				emp_work_category,
+			</if>
+			<if test="empIdNumber != null">
+				emp_ID_number,
+			</if>
+			<if test="empPhone != null">
+				emp_phone,
+			</if>
+			<if test="empSex != null">
+				emp_sex,
+			</if>
+			<if test="empAge != null">
+				emp_age,
+			</if>
+			<if test="empEntryDate != null">
+				emp_entry_date,
+			</if>
+			<if test="empDepartment != null">
+				emp_department,
+			</if>
+			<if test="empNativePlace != null">
+				emp_native_place,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="empId != null">
+				#{empId,jdbcType=INTEGER},
+			</if>
+			<if test="empName != null">
+				#{empName,jdbcType=VARCHAR},
+			</if>
+			<if test="empJobTitle != null">
+				#{empJobTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="empWorkCategory != null">
+				#{empWorkCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="empIdNumber != null">
+				#{empIdNumber,jdbcType=CHAR},
+			</if>
+			<if test="empPhone != null">
+				#{empPhone,jdbcType=INTEGER},
+			</if>
+			<if test="empSex != null">
+				#{empSex,jdbcType=VARCHAR},
+			</if>
+			<if test="empAge != null">
+				#{empAge,jdbcType=INTEGER},
+			</if>
+			<if test="empEntryDate != null">
+				#{empEntryDate,jdbcType=DATE},
+			</if>
+			<if test="empDepartment != null">
+				#{empDepartment,jdbcType=VARCHAR},
+			</if>
+			<if test="empNativePlace != null">
+				#{empNativePlace,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.tl.login.pojo.Employee">
+		update employee_
+		<set>
+			<if test="empId != null">
+				emp_id = #{empId,jdbcType=INTEGER},
+			</if>
+			<if test="empName != null">
+				emp_name = #{empName,jdbcType=VARCHAR},
+			</if>
+			<if test="empJobTitle != null">
+				emp_job_title = #{empJobTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="empWorkCategory != null">
+				emp_work_category = #{empWorkCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="empIdNumber != null">
+				emp_ID_number = #{empIdNumber,jdbcType=CHAR},
+			</if>
+			<if test="empPhone != null">
+				emp_phone = #{empPhone,jdbcType=INTEGER},
+			</if>
+			<if test="empSex != null">
+				emp_sex = #{empSex,jdbcType=VARCHAR},
+			</if>
+			<if test="empAge != null">
+				emp_age = #{empAge,jdbcType=INTEGER},
+			</if>
+			<if test="empEntryDate != null">
+				emp_entry_date = #{empEntryDate,jdbcType=DATE},
+			</if>
+			<if test="empDepartment != null">
+				emp_department = #{empDepartment,jdbcType=VARCHAR},
+			</if>
+			<if test="empNativePlace != null">
+				emp_native_place = #{empNativePlace,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where Id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.tl.login.pojo.Employee">
+		update employee_
+		set emp_id = #{empId,jdbcType=INTEGER},
+		emp_name = #{empName,jdbcType=VARCHAR},
+		emp_job_title = #{empJobTitle,jdbcType=VARCHAR},
+		emp_work_category = #{empWorkCategory,jdbcType=VARCHAR},
+		emp_ID_number = #{empIdNumber,jdbcType=CHAR},
+		emp_phone = #{empPhone,jdbcType=INTEGER},
+		emp_sex = #{empSex,jdbcType=VARCHAR},
+		emp_age = #{empAge,jdbcType=INTEGER},
+		emp_entry_date = #{empEntryDate,jdbcType=DATE},
+		emp_department = #{empDepartment,jdbcType=VARCHAR},
+		emp_native_place = #{empNativePlace,jdbcType=VARCHAR}
+		where Id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<select id="list" resultType="Employee">
+		select * from employee_
+	</select>
+</mapper>
