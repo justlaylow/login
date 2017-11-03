@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tl.login.mapper.DepartmentMapper">
+  <resultMap id="BaseResultMap" type="com.tl.login.pojo.Department">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="dep_id" jdbcType="VARCHAR" property="depId" />
+    <result column="dep_name" jdbcType="VARCHAR" property="depName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, dep_id, dep_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from department_
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from department_
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tl.login.pojo.Department">
+    insert into department_ (Id, dep_id, dep_name
+      )
+    values (#{id,jdbcType=INTEGER}, #{depId,jdbcType=VARCHAR}, #{depName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tl.login.pojo.Department">
+    insert into department_
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="depId != null">
+        dep_id,
+      </if>
+      <if test="depName != null">
+        dep_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="depId != null">
+        #{depId,jdbcType=VARCHAR},
+      </if>
+      <if test="depName != null">
+        #{depName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tl.login.pojo.Department">
+    update department_
+    <set>
+      <if test="depId != null">
+        dep_id = #{depId,jdbcType=VARCHAR},
+      </if>
+      <if test="depName != null">
+        dep_name = #{depName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tl.login.pojo.Department">
+    update department_
+    set dep_id = #{depId,jdbcType=VARCHAR},
+      dep_name = #{depName,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="listDepartment" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List" /> from department_
+  </select>
+</mapper>

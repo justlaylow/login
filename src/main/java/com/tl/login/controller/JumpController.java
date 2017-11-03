@@ -7,9 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class InsertController {
+public class JumpController {
 	@RequestMapping("/main")
 	public String insert(HttpServletRequest request,HttpServletResponse response) {
 		return "addEmployee";
+	}
+	
+	@RequestMapping("/select")
+	public String list(HttpServletRequest request,HttpServletResponse response) {
+		return "emp";
 	}
 }

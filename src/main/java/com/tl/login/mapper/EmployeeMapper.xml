@@ -179,7 +179,8 @@
 		where Id = #{id,jdbcType=INTEGER}
 	</update>
 
-	<select id="list" resultType="Employee">
-		select * from employee_
+	<select id="listEmp" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"></include> from employee_
 	</select>
+	
 </mapper>

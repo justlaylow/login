@@ -8,17 +8,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	${insertEmp}
-	<form action="/login/main" method="post">
-		<input type="submit" value="新增"/>
-	</form>
-	
-	<form action="/login/list" method="post">
-		<input type="submit" value="员工查询"/>
-	</form>
-	
-	<form action="/login/depart" method="post">
-		<input type="submit" value="部门查询"/>
-	</form>
+	<table border="1" width="700">  
+        <tr>  
+            <th>部门编号</th>  
+            <th>部门名称</th>  
+        </tr>  
+        <c:forEach var="dep" items="${deplist}">  
+        <tr>  
+            <!-- 和po类里的属性名一样 -->  
+            <td>${dep.depId}</td>  
+            <td>${dep.depName}</td>
+        </tr>  
+        </c:forEach>   
+    </table> 
 </body>
 </html>

@@ -18,5 +18,5 @@ public interface EmployeeMapper {
 
     int updateByPrimaryKey(Employee record);
     
-    public List<Admin> list();
+    public List<Employee> listEmp();
 }

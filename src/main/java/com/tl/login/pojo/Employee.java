@@ -5,8 +5,9 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Employee {
+	private Integer Id;
 
-    private Integer empId;
+	private Integer empId;
 
     private String empName;
 
@@ -29,6 +30,15 @@ public class Employee {
 
     private String empNativePlace;
 
+    
+
+    public Integer getId() {
+		return Id;
+	}
+
+	public void setId(Integer id) {
+		Id = id;
+	}
     public Integer getEmpId() {
         return empId;
     }
